@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback,Suspense  } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
 const API_URL = 'https://srijandubey.github.io/campus-api-mock/SRM-C1-25.json';
@@ -249,6 +249,7 @@ export default function DoctorListingPage() {
                 <h1 className="text-2xl md:text-3xl font-bold mb-4">Find Your Doctor</h1>
                 <p className="text-blue-100 mb-4">Book appointments with trusted healthcare professionals</p>
                 <div className="relative max-w-xl mx-auto">
+                <Suspense fallback={<p>Loading...</p>}>
                     <input
                         type="text"
                         placeholder="Search for doctors by name..."
@@ -260,6 +261,7 @@ export default function DoctorListingPage() {
                         aria-controls="autocomplete-suggestions"
                         className="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-300 focus:border-blue-500 text-gray-900 outline-none placeholder-gray-400"
                     />
+</Suspense>
                     {isSuggestionBoxVisible && suggestions.length > 0 && (
                         <ul
                             id="autocomplete-suggestions"
